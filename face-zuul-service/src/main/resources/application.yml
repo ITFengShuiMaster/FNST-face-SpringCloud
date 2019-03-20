@@ -1,0 +1,47 @@
+# 应用相关配置
+server:
+  port: 8888
+spring:
+  application:
+    name: face-zuul-service
+#  zipkin:
+#    base-url: http://localhost:9411
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+# eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+
+# feigin
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 10000
+        readTimeout: 10000
+
+# zuul 路由配置
+zuul:
+  routes:
+    user:
+      path: /service-user/**
+      serviceId: face-user-service
+#    data:
+#      path: /data/**
+#      serviceId: weather-data-api
+
+ribbon:
+  ReadTimeout: 10000
+  SocketTimeout: 10000
+
+#spring:
+#  sleuth:
+#    sampler:
+#      percentage: 1
+
+#  zipkin:
+#  spring.sleuth.sampler.percentage=1
+#  spring.zipkin.baseUrl=http://localhost:9411
